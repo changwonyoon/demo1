@@ -1,4 +1,4 @@
-node( label: 'slave01' ) {
+node( label: 'slave02' ) {
     stage('Preparation') {
         git 'https://github.com/changwonyoon/demo1.git';
     } 
