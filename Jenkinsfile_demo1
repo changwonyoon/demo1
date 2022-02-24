@@ -7,5 +7,18 @@ node( label: 'slave01' ) {
 		sh "rm -rf /home/jenkins/workspace/demo1/demo1_out"
         sh "chown -R jenkins:jenkins /home/jenkins/workspace"        
         sh 'make'
-    }  
+    }
+    stage('Publish') {
+        def server = Artifactory.server 'Artifactory Server'
+        def uploadSpec = """{
+            "files": [
+                {
+                    "pattern": "demo1_out",
+                    "target": "example-project/demo_slave01/${BUILD_NUMBER}/",
+                    "props": "Integration-Tested=No;Performance-Tested=No"
+                }
+            ]
+        }"""
+        server.upload(uploadSpec)
+    }      
 }
