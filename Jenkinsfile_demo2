@@ -1,6 +1,6 @@
 node( label: 'slave02' ) {
     stage('Preparation') {
-        git '-c http.sslverify=false https://github.com/changwonyoon/demo1.git';
+        git 'https://github.com/changwonyoon/demo1.git';
     } 
     stage('Build') {
 		sh "rm -rf /home/jenkins/workspace/demo1/demo1.o"
