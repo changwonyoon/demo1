@@ -1,5 +1,6 @@
-node( label: 'slave02' ) {
+node( label: 'slave01' ) {
     stage('Preparation') {
+        git config http.sslVerify false
         git 'https://github.com/changwonyoon/demo1.git';
     } 
     stage('Build') {
@@ -14,7 +15,7 @@ node( label: 'slave02' ) {
             "files": [
                 {
                     "pattern": "demo1_out",
-                    "target": "example-project/demo_slave02/${BUILD_NUMBER}/",
+                    "target": "example-project/demo_slave01/${BUILD_NUMBER}/",
                     "props": "Integration-Tested=No;Performance-Tested=No"
                 }
             ]

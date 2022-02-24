@@ -1,5 +1,6 @@
 node( label: 'slave02' ) {
     stage('Preparation') {
+        git config http.sslVerify false
         git 'https://github.com/changwonyoon/demo1.git';
     } 
     stage('Build') {
